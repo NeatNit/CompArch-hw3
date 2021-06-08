@@ -65,7 +65,7 @@ public:
             }
 
             // update program depth
-            if (result.depth + result.latency > progDepth) {
+            if (result.depth + result.latency > static_cast<int>(progDepth)) {
                 progDepth = result.depth + result.latency;
             }
         }
@@ -97,15 +97,15 @@ void freeProgCtx(ProgCtx ctx) {
 }
 
 int getInstDepth(ProgCtx ctx, unsigned int theInst) {
-    return static_cast<DFlowCalc *>(ctx).getInstDepth(theInst);
+    return static_cast<DFlowCalc *>(ctx)->getInstDepth(theInst);
 }
 
 int getInstDeps(ProgCtx ctx, unsigned int theInst, int *src1DepInst, int *src2DepInst) {
-    return static_cast<DFlowCalc *>(ctx).getInstDeps(theInst, *src1DepInst, *src2DepInst);
+    return static_cast<DFlowCalc *>(ctx)->getInstDeps(theInst, *src1DepInst, *src2DepInst);
 }
 
 int getProgDepth(ProgCtx ctx) {
-    return static_cast<DFlowCalc *>(ctx).getProgDepth();
+    return static_cast<DFlowCalc *>(ctx)->getProgDepth();
 }
 
 
