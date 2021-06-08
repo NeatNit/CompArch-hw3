@@ -48,7 +48,7 @@ public:
                 result.depth = dep.latency + dep.depth; // definitely bigger than 0
             }
 
-            int dep2i = register_writes[info.src1Idx];
+            int dep2i = register_writes[info.src2Idx];
             if (dep2i >= 0) {
                 // dep2i wrote to source register, Read After Write
                 Inst dep = instructions[dep2i];
