@@ -65,8 +65,8 @@ public:
             }
 
             // update program depth
-            if (result.depth + result.latency > static_cast<int>(progDepth)) {
-                progDepth = result.depth + result.latency;
+            if (result.depth + static_cast<int>(result.latency) > progDepth) {
+                progDepth = result.depth + static_cast<int>(result.latency);
             }
         }
     }
