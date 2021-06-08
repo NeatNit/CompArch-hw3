@@ -27,7 +27,7 @@ public:
 
         // analyze the instructions in order of execution:
         InstInfo info;
-        for (int i = 0; i < numOfInsts; ++i)
+        for (int i = 0; i < static_cast<int>(numOfInsts); ++i)
         {
             info = progTrace[i];
             Inst& result = instructions[i];
@@ -40,7 +40,7 @@ public:
             result.dependency2 = -1;
 
             // Find and store this instruction's dependencies
-            int dep1i = register_writes[info.src1Idx]
+            int dep1i = register_writes[info.src1Idx];
             if (dep1i >= 0) {
                 // dep1i wrote to source register, Read After Write
                 Inst dep = instructions[dep1i];
@@ -48,7 +48,7 @@ public:
                 result.depth = dep.latency + dep.depth; // definitely bigger than 0
             }
 
-            int dep2i = register_writes[info.src1Idx]
+            int dep2i = register_writes[info.src1Idx];
             if (dep2i >= 0) {
                 // dep2i wrote to source register, Read After Write
                 Inst dep = instructions[dep2i];
